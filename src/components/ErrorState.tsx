@@ -1,17 +1,33 @@
+import { AlertTriangle, RefreshCw } from 'lucide-react';
+
 interface ErrorStateProps {
+  title?: string;
   message?: string;
+  onRetry?: () => void;
 }
 
-const ErrorState = ({ message = 'Something went wrong while fetching Pokémon.' }: ErrorStateProps) => {
+const ErrorState = ({ 
+  title = "Something went wrong.", 
+  message = "We couldn't load the Pokémon right now.",
+  onRetry 
+}: ErrorStateProps) => {
   return (
-    <div className="glass-card p-10 flex flex-col items-center justify-center text-center">
-      <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-500 rounded-full flex items-center justify-center mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
+    <div className="glass-card p-10 flex flex-col items-center justify-center text-center w-full max-w-lg mx-auto my-12 animate-fade-in-up">
+      <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-500 rounded-full flex items-center justify-center mb-6">
+        <AlertTriangle className="h-8 w-8" />
       </div>
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Oops! An Error Occurred</h3>
-      <p className="text-slate-500 dark:text-slate-400 max-w-md">{message}</p>
+      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{title}</h3>
+      <p className="text-slate-500 dark:text-slate-400 mb-8">{message}</p>
+      
+      {onRetry && (
+        <button 
+          onClick={onRetry}
+          className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-bold transition-all hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center gap-2"
+        >
+          <RefreshCw className="w-5 h-5" />
+          Try Again
+        </button>
+      )}
     </div>
   );
 };

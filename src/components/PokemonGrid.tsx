@@ -1,17 +1,29 @@
 import PokemonCard from './PokemonCard';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorState from './ErrorState';
+import EmptyState from './EmptyState';
 import type { Pokemon } from '../types/pokemon';
 
 interface PokemonGridProps {
   pokemon: Pokemon[];
   isLoading: boolean;
   error: string | null;
+  onRetry?: () => void;
+  onClearFilters?: () => void;
 }
 
-const PokemonGrid = ({ pokemon, isLoading, error }: PokemonGridProps) => {
+const PokemonGrid = ({ pokemon, isLoading, error, onRetry, onClearFilters }: PokemonGridProps) => {
   if (error) {
-    return <ErrorState message={error} />;
+    if (error === 'SEARCH_ERROR') {
+      return (
+        <EmptyState 
+          title="Pokémon not found" 
+          message="Try searching for another Pokémon." 
+          onClearFilters={onClearFilters} 
+        />
+      );
+    }
+    return <ErrorState message={error} onRetry={onRetry} />;
   }
 
   if (isLoading) {
@@ -25,11 +37,7 @@ const PokemonGrid = ({ pokemon, isLoading, error }: PokemonGridProps) => {
   }
 
   if (pokemon.length === 0) {
-    return (
-      <div className="glass-card p-12 text-center text-slate-500 dark:text-slate-400">
-        No Pokémon found matching your criteria.
-      </div>
-    );
+    return <EmptyState onClearFilters={onClearFilters} />;
   }
 
   return (

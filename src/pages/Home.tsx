@@ -13,7 +13,7 @@ const Home = () => {
   const [selectedType, setSelectedType] = useState('');
   const [sortBy, setSortBy] = useState('default');
 
-  const { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore } = usePokemon(
+  const { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore, refetch } = usePokemon(
     20, 
     debouncedSearch, 
     selectedType
@@ -69,6 +69,12 @@ const Home = () => {
     }
   };
 
+  const handleClearFilters = () => {
+    setSearchInput('');
+    setSelectedType('');
+    setSortBy('default');
+  };
+
   return (
     <div className="w-full">
       <Hero />
@@ -85,7 +91,7 @@ const Home = () => {
           </div>
 
           {/* Search & Filter Area */}
-          <div className="glass-card p-4 md:p-6 mb-10 space-y-6">
+          <div className="glass-card p-4 md:p-6 mb-10 space-y-6 relative z-30">
             <div className="flex flex-col md:flex-row gap-4 justify-between items-center w-full">
               <div className="w-full md:w-1/2 lg:w-1/3">
                 <SearchBar value={searchInput} onChange={handleSearchChange} />
@@ -101,7 +107,13 @@ const Home = () => {
           </div>
 
           {/* Pokémon Grid */}
-          <PokemonGrid pokemon={sortedPokemon} isLoading={isLoading} error={error} />
+          <PokemonGrid 
+            pokemon={sortedPokemon} 
+            isLoading={isLoading} 
+            error={error}
+            onRetry={refetch}
+            onClearFilters={handleClearFilters}
+          />
 
           {/* Load More */}
           {hasMore && !isLoading && !error && !debouncedSearch && (
@@ -117,7 +129,7 @@ const Home = () => {
                     Loading more...
                   </span>
                 ) : (
-                  'Load More'
+                  'Load More Pokémon'
                 )}
               </button>
             </div>

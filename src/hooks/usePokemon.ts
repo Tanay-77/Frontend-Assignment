@@ -41,7 +41,7 @@ export const usePokemon = (
         } catch (err) {
           if (requestId === currentRequestId.current) {
             setPokemon([]);
-            setError(`No Pokémon found matching "${searchQuery}"`);
+            setError('SEARCH_ERROR');
           }
         }
       } else if (selectedType) {
@@ -134,5 +134,5 @@ export const usePokemon = (
     }
   };
 
-  return { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore };
+  return { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore, refetch: fetchInitial };
 };

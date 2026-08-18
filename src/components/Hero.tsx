@@ -57,7 +57,9 @@ const Hero = () => {
 
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full">
-            <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>Explore The World Of Pokemons</span>
+            <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>
+              Explore The World Of <span style={{ fontFamily: "'Pokemon Solid', sans-serif", fontWeight: 'normal', letterSpacing: '0.05em' }}>Pokemon</span>
+            </span>
 
             {/* <img
               src="/pokemon.png"

@@ -16,7 +16,11 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-lg p-1 z-10">
-          <Sparkles className="w-6 h-6 text-white group-hover:text-red-400 transition-colors" />
+          <img 
+            src="/pokemon.png" 
+            alt="PokéExplorer Logo" 
+            className="h-8 md:h-10 object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+          />
         </Link>
 
         {/* Center Pill Nav */}

@@ -46,17 +46,24 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
 
+
+        <img src="/random.png" alt="" className="absolute top-8 left-[2%] md:left-[8%] lg:left-[12%] w-12 md:w-16 opacity-80 hover:scale-110 -rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random 1.png" alt="" className="absolute top-32 right-[2%] md:right-[5%] lg:right-[15%] w-10 md:w-14 opacity-70 hover:scale-110 rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random.png" alt="" className="absolute bottom-52 right-[4%] md:right-[12%] lg:right-[8%] w-14 md:w-20 opacity-60 hover:scale-110 -rotate-6 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random 1.png" alt="" className="absolute bottom-24 left-[5%] md:left-[10%] lg:left-[5%] w-10 md:w-12 opacity-80 hover:scale-110 rotate-[20deg] transition-transform duration-300 drop-shadow-lg z-0" />
+
         {/* Text Content */}
         <div className="text-center space-y-6 max-w-5xl mx-auto flex flex-col items-center">
 
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full">
-            <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>Explore The World Of</span>
-            <img
+            <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>Explore The World Of Pokemons</span>
+
+            {/* <img
               src="/pokemon.png"
               alt="Pokémon"
               className="h-12 sm:h-16 md:h-24 lg:h-28 object-contain drop-shadow-2xl"
-            />
+            /> */}
           </h1>
 
           {/* <p className="text-base md:text-lg lg:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto animate-fade-in-up animation-delay-300 font-medium">

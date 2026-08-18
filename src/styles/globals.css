@@ -20,7 +20,7 @@
   --color-ghost: #7e22ce;
   --color-steel: #6b7280;
 
-  --font-sans: "Inter", "Roboto", "Outfit", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", "Outfit", system-ui, sans-serif;
 
   --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
   --animate-blob: blob 7s infinite;

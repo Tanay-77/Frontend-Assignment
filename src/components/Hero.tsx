@@ -47,15 +47,15 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
 
         {/* Text Content */}
-        <div className="text-center space-y-5 max-w-4xl mx-auto flex flex-col items-center">
+        <div className="text-center space-y-6 max-w-5xl mx-auto flex flex-col items-center">
 
 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tighter animate-fade-in-up animation-delay-150">
+          <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150">
             Explore the world of <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">Pokémon</span>
           </h1>
 
-          <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-xl mx-auto animate-fade-in-up animation-delay-300 font-medium">
+          <p className="text-base md:text-lg lg:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto animate-fade-in-up animation-delay-300 font-medium">
             Discover Pokémon, their types, abilities, stats, and more — all in one beautiful, highly responsive Pokédex designed for the modern web.
           </p>
 

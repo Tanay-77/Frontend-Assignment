@@ -59,22 +59,6 @@ const Hero = () => {
             Discover Pokémon, their types, abilities, stats, and more — all in one beautiful, highly responsive Pokédex designed for the modern web.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in-up animation-delay-500 w-full sm:w-auto px-4 sm:px-0">
-            <button
-              onClick={scrollToExplorer}
-              className="w-full sm:w-auto px-8 py-4 bg-white text-black hover:bg-slate-200 rounded-xl font-extrabold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-500"
-            >
-              Explore Pokémon
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <Link
-              to="/favorites"
-              className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border-2 border-slate-700 hover:border-slate-500 hover:bg-slate-800/50 rounded-xl font-extrabold transition-all flex items-center justify-center gap-2 group focus:outline-none focus-visible:ring-4 focus-visible:ring-red-500"
-            >
-              <Heart className="w-5 h-5 group-hover:fill-current transition-colors" />
-              View Favorites
-            </Link>
-          </div>
         </div>
 
         {/* Fan Cards */}

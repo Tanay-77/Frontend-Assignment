@@ -3,7 +3,7 @@ import { Compass, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 mt-auto">
+    <footer className="bg-[#050505] border-t border-white/5 py-12 mt-auto">
       <div className="container mx-auto px-4 text-center">
         <div className="flex justify-center items-center gap-2 mb-4">
           <Compass className="w-6 h-6 text-red-500" />

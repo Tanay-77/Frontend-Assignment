@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex flex-col transition-colors duration-300 bg-[#050505]">
         <Navbar />
         <main className="flex-grow pt-[72px]">
           <Routes>

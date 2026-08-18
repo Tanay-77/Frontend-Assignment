@@ -13,10 +13,10 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
     <div className="flex overflow-x-auto pb-2 -mb-2 hide-scrollbar gap-2 w-full">
       <button
         onClick={() => onChange('')}
-        className={`whitespace-nowrap px-4 py-2 rounded-xl text-sm font-bold transition-colors ${
+        className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-colors ${
           value === '' 
-            ? 'bg-slate-800 text-white dark:bg-white dark:text-slate-900 shadow-md' 
-            : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+            ? 'bg-white text-black shadow-[0_0_10px_rgba(255,255,255,0.3)]' 
+            : 'bg-[#0a0a0a] text-slate-400 hover:text-white border border-white/10 hover:border-white/30'
         }`}
       >
         All Types
@@ -25,10 +25,10 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
         <button
           key={type}
           onClick={() => onChange(type)}
-          className={`whitespace-nowrap px-4 py-2 rounded-xl text-sm font-bold capitalize transition-colors ${
+          className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold capitalize transition-colors ${
             value === type 
-              ? 'bg-red-500 text-white border border-red-500 shadow-md' 
-              : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+              ? 'bg-red-500 text-white shadow-[0_0_10px_rgba(239,68,68,0.5)]' 
+              : 'bg-[#0a0a0a] text-slate-400 hover:text-white border border-white/10 hover:border-white/30'
           }`}
         >
           {type}

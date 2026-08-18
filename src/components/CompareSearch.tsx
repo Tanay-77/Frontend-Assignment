@@ -84,7 +84,7 @@ const CompareSearch = ({ label, onSelect, selectedPokemon }: CompareSearchProps)
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className={`block w-full pl-10 pr-10 py-3 border ${error ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-700 focus:ring-red-500 focus:border-red-500'} rounded-xl leading-5 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 sm:text-sm transition-shadow dark:text-white`}
+          className={`block w-full pl-10 pr-10 py-3 border ${error ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-white/20 focus:border-white/20'} rounded-full leading-5 bg-[#0a0a0a] placeholder-slate-500 focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white shadow-inner`}
           placeholder={`Search for ${label}...`}
         />
         {query && (

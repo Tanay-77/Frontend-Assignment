@@ -15,7 +15,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl leading-5 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm transition-shadow dark:text-white"
+        className="block w-full pl-10 pr-10 py-3 border border-white/10 rounded-full leading-5 bg-[#0a0a0a] placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/20 sm:text-sm transition-shadow text-white shadow-inner"
         placeholder="Search Pokémon..."
       />
       {value && (

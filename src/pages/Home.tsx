@@ -121,7 +121,7 @@ const Home = () => {
               <button 
                 onClick={loadMore}
                 disabled={isLoadingMore}
-                className="px-8 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-500 rounded-xl font-bold transition-all flex items-center justify-center hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 bg-[#0a0a0a] text-white border border-white/10 hover:border-white/30 rounded-full font-bold transition-all flex items-center justify-center hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoadingMore ? (
                   <span className="flex items-center gap-2">

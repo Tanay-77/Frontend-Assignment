@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Heart, Moon, Sun, Compass } from 'lucide-react';
+import { Menu, X, Heart, Moon, Sun, Compass, Scale } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 
@@ -29,6 +29,12 @@ const Navbar = () => {
             <Link to="/" className="text-slate-600 dark:text-slate-300 hover:text-red-500 dark:hover:text-red-500 font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded p-1">
               Explore
             </Link>
+            
+            <Link to="/compare" className="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-red-500 dark:hover:text-red-500 font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded p-1">
+              <Scale className="w-5 h-5" />
+              Compare
+            </Link>
+
             <Link to="/favorites" className="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-red-500 dark:hover:text-red-500 font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded p-1">
               <Heart className="w-5 h-5" />
               Favorites
@@ -74,14 +80,24 @@ const Navbar = () => {
             <Link 
               to="/" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-bold text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="text-lg font-bold text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
             >
               Explore
             </Link>
+            
+            <Link 
+              to="/compare" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-lg font-bold text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+            >
+              <Scale className="w-5 h-5" />
+              Compare
+            </Link>
+
             <Link 
               to="/favorites" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-bold text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-3"
+              className="text-lg font-bold text-slate-700 dark:text-slate-200 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
             >
               <Heart className="w-5 h-5" />
               Favorites

@@ -27,6 +27,10 @@
   --animate-bounce-slow: bounce-slow 3s infinite ease-in-out;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   body {
     @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 antialiased transition-colors duration-300;

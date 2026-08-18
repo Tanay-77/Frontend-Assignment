@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import PokemonDetails from './pages/PokemonDetails';
 import Favorites from './pages/Favorites';
+import Compare from './pages/Compare';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pokemon/:id" element={<PokemonDetails />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/compare" element={<Compare />} />
           </Routes>
         </main>
         <Footer />

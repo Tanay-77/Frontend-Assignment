@@ -46,3 +46,15 @@ export const getPokemonTypes = async (): Promise<{ name: string; url: string }[]
     throw error;
   }
 };
+
+export const getAllPokemonNames = async (): Promise<string[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/pokemon?limit=10000`);
+    if (!response.ok) throw new Error('Failed to fetch all Pokémon names');
+    const data = await response.json();
+    return data.results.map((p: { name: string }) => p.name);
+  } catch (error) {
+    console.error('Error fetching all Pokémon names:', error);
+    return [];
+  }
+};

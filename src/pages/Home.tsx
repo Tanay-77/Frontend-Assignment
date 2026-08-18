@@ -79,7 +79,7 @@ const Home = () => {
     <div className="w-full">
       <Hero />
       
-      <section id="explorer-section" className="py-16 md:py-24">
+      <section id="explorer-section" className="relative z-10 pt-28 pb-16 md:pt-40 md:pb-24 bg-[#050505]">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">

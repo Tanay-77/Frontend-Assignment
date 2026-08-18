@@ -1,11 +1,13 @@
-
 import Hero from '../components/Hero';
 import SearchBar from '../components/SearchBar';
 import TypeFilter from '../components/TypeFilter';
 import SortDropdown from '../components/SortDropdown';
 import PokemonGrid from '../components/PokemonGrid';
+import { usePokemon } from '../hooks/usePokemon';
 
 const Home = () => {
+  const { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore } = usePokemon(20);
+
   return (
     <div className="w-full">
       <Hero />
@@ -32,15 +34,28 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Pokémon Grid Placeholder */}
-          <PokemonGrid />
+          {/* Pokémon Grid */}
+          <PokemonGrid pokemon={pokemon} isLoading={isLoading} error={error} />
 
-          {/* Load More Placeholder */}
-          <div className="mt-12 flex justify-center">
-            <button className="px-8 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-500 rounded-xl font-bold transition-all flex items-center justify-center hover:shadow-md">
-              Load More Pokémon
-            </button>
-          </div>
+          {/* Load More */}
+          {hasMore && !isLoading && !error && (
+            <div className="mt-12 flex justify-center">
+              <button 
+                onClick={loadMore}
+                disabled={isLoadingMore}
+                className="px-8 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-500 rounded-xl font-bold transition-all flex items-center justify-center hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isLoadingMore ? (
+                  <span className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-slate-400 border-t-red-500 rounded-full animate-spin"></div>
+                    Loading...
+                  </span>
+                ) : (
+                  'Load More Pokémon'
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>

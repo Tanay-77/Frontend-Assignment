@@ -4,12 +4,14 @@ import { ArrowLeft, Heart, Ruler, Weight } from 'lucide-react';
 import { getPokemon } from '../services/pokemonApi';
 import type { Pokemon } from '../types/pokemon';
 import { getTypeColor } from '../utils/pokemonColors';
+import { useFavorites } from '../contexts/FavoritesContext';
 import StatBar from '../components/StatBar';
 import ErrorState from '../components/ErrorState';
 
 const PokemonDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { isFavorite, toggleFavorite } = useFavorites();
   
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -84,13 +86,18 @@ const PokemonDetails = () => {
         <div className="flex justify-between items-center mb-8">
           <button 
             onClick={() => navigate(-1)}
-            className="p-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all"
+            className="p-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-red-500/50"
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
           
-          <button className="p-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl text-slate-400 hover:text-red-500 hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all">
-            <Heart className="w-6 h-6" />
+          <button 
+            onClick={() => toggleFavorite(pokemon)}
+            className={`p-3 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl shadow-sm transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-red-500/50 hover:bg-white dark:hover:bg-slate-700 hover:scale-105 ${
+              isFavorite(pokemon.id) ? 'text-red-500' : 'text-slate-400 hover:text-red-500'
+            }`}
+          >
+            <Heart className={`w-6 h-6 ${isFavorite(pokemon.id) ? 'fill-red-500' : ''}`} />
           </button>
         </div>
 

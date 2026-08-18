@@ -2,12 +2,16 @@ import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Pokemon } from '../types/pokemon';
 import { getTypeColor } from '../utils/pokemonColors';
+import { useFavorites } from '../contexts/FavoritesContext';
 
 interface PokemonCardProps {
   pokemon: Pokemon;
 }
 
 const PokemonCard = ({ pokemon }: PokemonCardProps) => {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorited = isFavorite(pokemon.id);
+
   const mainType = pokemon.types[0]?.type.name || 'normal';
   const typeColorClass = getTypeColor(mainType);
   
@@ -17,10 +21,15 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
   // Get image, preferring official artwork, falling back to front_default
   const imageUrl = pokemon.sprites.other['official-artwork']?.front_default || pokemon.sprites.front_default;
 
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigating to details page
+    toggleFavorite(pokemon);
+  };
+
   return (
     <Link 
       to={`/pokemon/${pokemon.id}`}
-      className="group relative block glass-card overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-slate-700/50"
+      className="group relative block glass-card overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-slate-700/50 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-500/50"
     >
       {/* Background Accent based on main type */}
       <div className={`absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20 ${typeColorClass}`}></div>
@@ -28,15 +37,17 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
       <div className="p-5 relative z-10">
         <div className="flex justify-between items-start mb-4">
           <span className="text-sm font-bold text-slate-500 dark:text-slate-400">{formattedId}</span>
-          {/* Favorite placeholder */}
+          {/* Favorite button */}
           <button 
-            className="p-1.5 rounded-full bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-700 text-slate-400 hover:text-red-500 transition-colors z-20"
-            onClick={(e) => {
-              e.preventDefault(); // Prevent navigating to details page
-              // Favorite logic will go here
-            }}
+            className={`p-1.5 rounded-full transition-colors z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 hover:scale-110 ${
+              favorited 
+                ? 'bg-red-50 dark:bg-red-900/30 text-red-500' 
+                : 'bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-700 text-slate-400 hover:text-red-500'
+            }`}
+            onClick={handleFavoriteClick}
+            aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
           >
-            <Heart className="w-5 h-5" />
+            <Heart className={`w-5 h-5 ${favorited ? 'fill-red-500' : ''}`} />
           </button>
         </div>
 

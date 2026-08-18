@@ -50,12 +50,12 @@ const Hero = () => {
         <div className="text-center space-y-6 max-w-5xl mx-auto flex flex-col items-center">
 
 
-          <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-col items-center gap-4">
-            <span style={{ fontFamily: "'Pokemon Solid', sans-serif", letterSpacing: '0.05em', fontWeight: 'normal' }}>Explore the world of</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full">
+            <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>Explore The World Of</span>
             <img
               src="/pokemon.png"
               alt="Pokémon"
-              className="h-16 sm:h-24 md:h-32 lg:h-40 object-contain drop-shadow-2xl"
+              className="h-12 sm:h-16 md:h-24 lg:h-28 object-contain drop-shadow-2xl"
             />
           </h1>
 

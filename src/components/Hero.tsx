@@ -30,11 +30,11 @@ const Hero = () => {
 
   const getCardTransformsFlex = (index: number) => {
     switch (index) {
-      case 0: return "z-10 -rotate-[8deg] translate-y-20 md:translate-y-28 scale-90 opacity-85 hover:opacity-100";
-      case 1: return "z-20 -rotate-[4deg] translate-y-10 md:translate-y-14 scale-95 opacity-95 hover:opacity-100";
-      case 2: return "z-30 rotate-0 scale-105 md:scale-110 shadow-2xl";
-      case 3: return "z-20 rotate-[4deg] translate-y-10 md:translate-y-14 scale-95 opacity-95 hover:opacity-100";
-      case 4: return "z-10 rotate-[8deg] translate-y-20 md:translate-y-28 scale-90 opacity-85 hover:opacity-100";
+      case 0: return "z-10 -rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
+      case 1: return "z-20 -rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
+      case 2: return "z-30 rotate-0 scale-100 md:scale-105 shadow-2xl";
+      case 3: return "z-20 rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
+      case 4: return "z-10 rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
       default: return "";
     }
   };
@@ -50,12 +50,12 @@ const Hero = () => {
         <div className="text-center space-y-5 max-w-4xl mx-auto flex flex-col items-center">
 
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter animate-fade-in-up animation-delay-150">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tighter animate-fade-in-up animation-delay-150">
             Explore the world of <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">Pokémon</span>
           </h1>
 
-          <p className="text-base md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto animate-fade-in-up animation-delay-300 font-medium">
+          <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-xl mx-auto animate-fade-in-up animation-delay-300 font-medium">
             Discover Pokémon, their types, abilities, stats, and more — all in one beautiful, highly responsive Pokédex designed for the modern web.
           </p>
 
@@ -78,23 +78,23 @@ const Hero = () => {
         </div>
 
         {/* Fan Cards */}
-        <div className="relative w-full max-w-5xl mx-auto mt-12 md:mt-20 flex justify-center items-end z-20 pb-0 mb-[-60px] md:mb-[-100px]">
+        <div className="relative w-full max-w-6xl mx-auto mt-4 md:mt-8 flex justify-center items-end z-20 pb-0 mb-[-60px] md:mb-[-80px]">
           {heroCards.length > 0 ? heroCards.map((pokemon, index) => {
-             const marginClass = index === 0 ? "" : "-ml-20 sm:-ml-28 md:-ml-32 lg:-ml-40";
+            const marginClass = index === 0 ? "" : "-ml-20 sm:-ml-28 md:-ml-32 lg:-ml-40";
 
-             return (
-               <div 
-                 key={pokemon.id} 
-                 className={`relative w-40 sm:w-52 md:w-64 lg:w-72 origin-bottom transition-all duration-700 ease-out hover:!z-50 animate-fade-in-up ${marginClass} ${getCardTransformsFlex(index)}`}
-                 style={{ animationDelay: `${500 + index * 100}ms` }}
-               >
-                 <div className="w-full h-full hover:-translate-y-8 md:hover:-translate-y-12 transition-transform duration-300 pointer-events-auto rounded-3xl">
-                   <PokemonCard pokemon={pokemon} />
-                 </div>
-               </div>
-             );
+            return (
+              <div
+                key={pokemon.id}
+                className={`relative w-48 sm:w-56 md:w-72 lg:w-80 origin-bottom transition-all duration-700 ease-out hover:!z-50 animate-fade-in-up ${marginClass} ${getCardTransformsFlex(index)}`}
+                style={{ animationDelay: `${500 + index * 100}ms` }}
+              >
+                <div className="w-full h-full hover:-translate-y-8 md:hover:-translate-y-12 transition-transform duration-300 pointer-events-auto rounded-3xl">
+                  <PokemonCard pokemon={pokemon} />
+                </div>
+              </div>
+            );
           }) : (
-             <div className="w-full h-[250px] flex items-center justify-center text-slate-500 font-bold animate-pulse">Loading Pokédex Cards...</div>
+            <div className="w-full h-[250px] flex items-center justify-center text-slate-500 font-bold animate-pulse">Loading Pokédex Cards...</div>
           )}
         </div>
 

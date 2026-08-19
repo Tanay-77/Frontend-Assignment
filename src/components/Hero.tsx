@@ -23,7 +23,7 @@ const Hero = () => {
     switch (index) {
       case 0: return "z-10 -rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
       case 1: return "z-20 -rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
-      case 2: return "z-30 rotate-0 scale-100 md:scale-105 shadow-2xl";
+      case 2: return "z-30 rotate-0 scale-100 md:scale-105";
       case 3: return "z-20 rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
       case 4: return "z-10 rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
       default: return "";

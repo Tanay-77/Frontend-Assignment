@@ -14,15 +14,15 @@ const Home = () => {
   const [sortBy, setSortBy] = useState('default');
 
   const { pokemon, isLoading, isLoadingMore, error, hasMore, loadMore, refetch } = usePokemon(
-    20, 
-    debouncedSearch, 
+    20,
+    debouncedSearch,
     selectedType
   );
 
   // Client-side sorting of loaded pokemon
   const sortedPokemon = useMemo(() => {
     if (sortBy === 'default') return pokemon;
-    
+
     return [...pokemon].sort((a, b) => {
       switch (sortBy) {
         case 'id-asc':
@@ -78,7 +78,7 @@ const Home = () => {
   return (
     <div className="w-full">
       <Hero />
-      
+
       <section id="explorer-section" className="relative z-10 pt-28 pb-16 md:pt-40 md:pb-24 bg-[#050505]">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center md:text-left">
@@ -86,7 +86,7 @@ const Home = () => {
               Pokémon Explorer
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl">
-              Search for your favorite Pokémon by name, ID, or filter by their elemental types.
+              Search for your favorite Pokémon by name or filter by their elemental types.
             </p>
           </div>
 
@@ -100,16 +100,16 @@ const Home = () => {
                 <SortDropdown value={sortBy} onChange={setSortBy} />
               </div>
             </div>
-            
+
             <div className="w-full border-t border-slate-200 dark:border-slate-700 pt-4">
               <TypeFilter value={selectedType} onChange={handleTypeChange} />
             </div>
           </div>
 
           {/* Pokémon Grid */}
-          <PokemonGrid 
-            pokemon={sortedPokemon} 
-            isLoading={isLoading} 
+          <PokemonGrid
+            pokemon={sortedPokemon}
+            isLoading={isLoading}
             error={error}
             onRetry={refetch}
             onClearFilters={handleClearFilters}
@@ -118,7 +118,7 @@ const Home = () => {
           {/* Load More */}
           {hasMore && !isLoading && !error && !debouncedSearch && (
             <div className="mt-12 flex justify-center">
-              <button 
+              <button
                 onClick={loadMore}
                 disabled={isLoadingMore}
                 className="px-8 py-3 bg-[#0a0a0a] text-white border border-white/10 hover:border-white/30 rounded-full font-bold transition-all flex items-center justify-center hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"

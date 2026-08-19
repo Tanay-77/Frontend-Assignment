@@ -46,7 +46,6 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
 
-
         <img src="/random.png" alt="" className="absolute top-8 left-[2%] md:left-[8%] lg:left-[12%] w-12 md:w-16 opacity-80 hover:scale-110 -rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
         <img src="/random 1.png" alt="" className="absolute top-32 right-[2%] md:right-[5%] lg:right-[15%] w-10 md:w-14 opacity-70 hover:scale-110 rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
         <img src="/random.png" alt="" className="absolute bottom-52 right-[4%] md:right-[12%] lg:right-[8%] w-14 md:w-20 opacity-60 hover:scale-110 -rotate-6 transition-transform duration-300 drop-shadow-lg z-0" />

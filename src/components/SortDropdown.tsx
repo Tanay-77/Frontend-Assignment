@@ -9,7 +9,7 @@ const SortDropdown = ({ value, onChange }: SortDropdownProps) => {
       <select 
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="block w-full min-w-[180px] pl-4 pr-10 py-3 text-base border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 sm:text-sm rounded-full bg-[#0a0a0a] text-white transition-shadow appearance-none cursor-pointer border shadow-inner"
+        className="block w-full min-w-[180px] pl-4 pr-10 py-3 text-base border border-slate-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-white/20 sm:text-sm rounded-full bg-white dark:bg-[#0a0a0a] text-slate-900 dark:text-white transition-all appearance-none cursor-pointer shadow-sm dark:shadow-inner"
       >
         <option value="default">Default Sorting</option>
         <option value="id-asc">ID Low → High</option>

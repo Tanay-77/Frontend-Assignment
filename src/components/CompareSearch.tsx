@@ -124,7 +124,7 @@ const CompareSearch = ({ label, onSelect, selectedPokemon }: CompareSearchProps)
             setShowSuggestions(true);
           }}
           onFocus={() => setShowSuggestions(true)}
-          className={`block w-full pl-10 pr-10 py-3 border ${error ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-white/20 focus:border-white/20'} rounded-full leading-5 bg-[#0a0a0a] placeholder-slate-500 focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white shadow-inner`}
+          className={`block w-full pl-10 pr-10 py-3 border ${error ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 dark:border-white/10 focus:ring-slate-400 dark:focus:ring-white/20 focus:border-slate-400 dark:focus:border-white/20'} rounded-full leading-5 bg-white dark:bg-[#0a0a0a] placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 sm:text-sm transition-all text-slate-900 dark:text-white shadow-sm dark:shadow-inner`}
           placeholder={`Search for ${label}...`}
         />
         {query && (
@@ -141,14 +141,14 @@ const CompareSearch = ({ label, onSelect, selectedPokemon }: CompareSearchProps)
 
         {/* Suggestions Dropdown */}
         {showSuggestions && suggestions.length > 0 && (
-          <ul className="absolute mt-2 w-full bg-[#0f0f0f] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-60 overflow-y-auto custom-scrollbar">
+          <ul className="absolute mt-2 w-full bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl dark:shadow-2xl overflow-hidden z-50 divide-y divide-slate-100 dark:divide-white/5 max-h-60 overflow-y-auto custom-scrollbar transition-colors">
             {suggestions.map((suggestion, index) => (
               <li 
                 key={index}
                 onClick={() => handleSelect(suggestion)}
-                className="px-4 py-3 cursor-pointer hover:bg-white/10 text-slate-200 text-sm capitalize transition-colors flex items-center gap-3"
+                className="px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 text-sm capitalize transition-colors flex items-center gap-3"
               >
-                <Search className="w-4 h-4 text-slate-500" />
+                <Search className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                 {suggestion}
               </li>
             ))}

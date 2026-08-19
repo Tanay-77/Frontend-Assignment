@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Scale } from 'lucide-react';
 import CompareSearch from '../components/CompareSearch';
 import type { Pokemon } from '../types/pokemon';
 import { getTypeColor } from '../utils/pokemonColors';
@@ -20,18 +19,18 @@ const Compare = () => {
   const stats = Object.keys(STAT_LABELS);
 
   const getWinnerClass = (valA: number, valB: number, isA: boolean) => {
-    if (valA === valB) return 'text-white/60 font-medium'; // Tie
+    if (valA === valB) return 'text-slate-500 dark:text-white/60 font-medium'; // Tie
     if (isA) {
-      return valA > valB ? 'text-white font-bold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-white/20 font-light';
+      return valA > valB ? 'text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-slate-300 dark:text-white/20 font-light';
     } else {
-      return valB > valA ? 'text-white font-bold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-white/20 font-light';
+      return valB > valA ? 'text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-slate-300 dark:text-white/20 font-light';
     }
   };
 
   const getBarColor = (valA: number, valB: number, isA: boolean) => {
-    if (valA === valB) return 'bg-white/20';
-    if (isA) return valA > valB ? 'bg-white' : 'bg-white/10';
-    return valB > valA ? 'bg-white' : 'bg-white/10';
+    if (valA === valB) return 'bg-slate-300 dark:bg-white/20';
+    if (isA) return valA > valB ? 'bg-slate-900 dark:bg-white' : 'bg-slate-200 dark:bg-white/10';
+    return valB > valA ? 'bg-slate-900 dark:bg-white' : 'bg-slate-200 dark:bg-white/10';
   };
 
   return (
@@ -40,10 +39,10 @@ const Compare = () => {
         
         {/* Header */}
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 text-white flex items-center justify-center gap-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 text-slate-900 dark:text-white flex items-center justify-center gap-4 tracking-tight">
             COMPARE
           </h2>
-          <p className="text-white/40 max-w-2xl mx-auto font-medium tracking-wide">
+          <p className="text-slate-500 dark:text-white/40 max-w-2xl mx-auto font-medium tracking-wide">
             Select two Pokémon to instantly compare their base stats side-by-side.
           </p>
         </div>
@@ -79,35 +78,35 @@ const Compare = () => {
 
         {/* Comparison Area */}
         {pokemonA && pokemonB ? (
-          <div className="bg-[#0a0a0a] border border-white/5 overflow-hidden rounded-[2rem] shadow-2xl animate-fade-in-up relative z-10">
+          <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-white/5 overflow-hidden rounded-[2rem] shadow-xl dark:shadow-2xl animate-fade-in-up relative z-10 transition-colors duration-300">
             
             {/* Profiles */}
             <div className="flex relative">
               <div className="w-1/2 p-8 md:p-12 flex flex-col items-center relative overflow-hidden group">
-                <div className={`absolute inset-0 opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.08] ${getTypeColor(pokemonA.types[0]?.type.name)}`}></div>
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
+                <div className={`absolute inset-0 opacity-[0.05] dark:opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.1] dark:group-hover:opacity-[0.08] ${getTypeColor(pokemonA.types[0]?.type.name)}`}></div>
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-100 dark:from-white/5 to-transparent"></div>
                 <img 
                   src={pokemonA.sprites.other['official-artwork']?.front_default || pokemonA.sprites.front_default} 
                   alt={pokemonA.name}
-                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-xl dark:drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
-                <h3 className="text-2xl md:text-3xl font-black capitalize text-white text-center tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-black capitalize text-slate-900 dark:text-white text-center tracking-tight">
                   {pokemonA.name}
                 </h3>
               </div>
               
               {/* Center Divider */}
-              <div className="w-px bg-gradient-to-b from-transparent via-white/10 to-transparent absolute left-1/2 top-10 bottom-10"></div>
+              <div className="w-px bg-gradient-to-b from-transparent via-slate-200 dark:via-white/10 to-transparent absolute left-1/2 top-10 bottom-10"></div>
               
               <div className="w-1/2 p-8 md:p-12 flex flex-col items-center relative overflow-hidden group">
-                <div className={`absolute inset-0 opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.08] ${getTypeColor(pokemonB.types[0]?.type.name)}`}></div>
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
+                <div className={`absolute inset-0 opacity-[0.05] dark:opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.1] dark:group-hover:opacity-[0.08] ${getTypeColor(pokemonB.types[0]?.type.name)}`}></div>
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-100 dark:from-white/5 to-transparent"></div>
                 <img 
                   src={pokemonB.sprites.other['official-artwork']?.front_default || pokemonB.sprites.front_default} 
                   alt={pokemonB.name}
-                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-xl dark:drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
-                <h3 className="text-2xl md:text-3xl font-black capitalize text-white text-center tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-black capitalize text-slate-900 dark:text-white text-center tracking-tight">
                   {pokemonB.name}
                 </h3>
               </div>
@@ -123,7 +122,7 @@ const Compare = () => {
                 const maxStat = 150; 
 
                 return (
-                  <div key={statName} className="flex relative items-center justify-between py-5 border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+                  <div key={statName} className="flex relative items-center justify-between py-5 border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors group">
                     
                     {/* Stat A */}
                     <div className="w-1/2 pr-12 sm:pr-16 md:pr-20 flex justify-end items-center gap-4 md:gap-8">
@@ -131,20 +130,20 @@ const Compare = () => {
                         {statA}
                       </span>
                       {/* Bar going left */}
-                      <div className="w-16 md:w-32 h-1 bg-white/5 rounded-full overflow-hidden hidden sm:block">
+                      <div className="w-16 md:w-32 h-1 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden hidden sm:block">
                          <div className={`h-full ml-auto rounded-full transition-all duration-1000 ease-out ${getBarColor(statA, statB, true)}`} style={{ width: `${Math.min((statA / maxStat) * 100, 100)}%` }}></div>
                       </div>
                     </div>
 
                     {/* Label */}
-                    <div className="absolute left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors z-10 bg-[#0a0a0a] px-2 whitespace-nowrap">
+                    <div className="absolute left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-600 dark:text-white/30 dark:group-hover:text-white/50 transition-colors z-10 bg-white dark:bg-[#0a0a0a] px-2 whitespace-nowrap">
                       {STAT_LABELS[statName]}
                     </div>
 
                     {/* Stat B */}
                     <div className="w-1/2 pl-12 sm:pl-16 md:pl-20 flex justify-start items-center gap-4 md:gap-8">
                       {/* Bar going right */}
-                      <div className="w-16 md:w-32 h-1 bg-white/5 rounded-full overflow-hidden hidden sm:block">
+                      <div className="w-16 md:w-32 h-1 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden hidden sm:block">
                          <div className={`h-full rounded-full transition-all duration-1000 ease-out ${getBarColor(statA, statB, false)}`} style={{ width: `${Math.min((statB / maxStat) * 100, 100)}%` }}></div>
                       </div>
                       <span className={`text-xl md:text-2xl transition-all duration-300 ${getWinnerClass(statA, statB, false)}`}>
@@ -169,7 +168,7 @@ const Compare = () => {
                         </span>
                       </div>
                       
-                      <div className="absolute left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white/40 px-4 bg-[#0a0a0a] whitespace-nowrap">
+                      <div className="absolute left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-slate-400 dark:text-white/40 px-4 bg-white dark:bg-[#0a0a0a] whitespace-nowrap transition-colors">
                         TOTAL
                       </div>
 
@@ -186,12 +185,12 @@ const Compare = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 bg-white/[0.01] rounded-[2rem] animate-fade-in-up">
+          <div className="flex flex-col items-center justify-center p-16 text-center border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.01] rounded-[2rem] animate-fade-in-up transition-colors duration-300">
             <div className="relative flex items-center justify-center mb-8 select-none scale-110">
               <span className="text-7xl md:text-8xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-red-500 via-red-600 to-orange-500 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)] z-10 -mr-3">V</span>
               <span className="text-6xl md:text-7xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-bl from-blue-400 via-blue-500 to-indigo-600 drop-shadow-[0_0_20px_rgba(59,130,246,0.6)] z-0 mt-6 -ml-1">S</span>
             </div>
-            <p className="text-white/40 font-medium tracking-wide">
+            <p className="text-slate-500 dark:text-white/40 font-medium tracking-wide">
               Search and select two Pokémon above to compare their stats.
             </p>
           </div>

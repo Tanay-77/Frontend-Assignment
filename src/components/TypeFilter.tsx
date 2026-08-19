@@ -42,7 +42,7 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
   return (
     <div className="relative w-full">
       {/* Left fade out */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#050505] to-transparent pointer-events-none z-10"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-50 dark:from-[#050505] to-transparent pointer-events-none z-10 transition-colors duration-300"></div>
       
       {/* Scrollable Container */}
       <div 
@@ -57,10 +57,10 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
       >
         <button
           onClick={() => onChange('')}
-          className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-colors shrink-0 ${
+          className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-all shrink-0 ${
             value === '' 
-              ? 'bg-white text-black shadow-[0_0_10px_rgba(255,255,255,0.3)]' 
-              : 'bg-[#0a0a0a] text-slate-400 hover:text-white border border-white/10 hover:border-white/30'
+              ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow-md dark:shadow-[0_0_10px_rgba(255,255,255,0.3)]' 
+              : 'bg-white dark:bg-[#0a0a0a] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/30'
           }`}
         >
           All Types
@@ -69,10 +69,10 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
           <button
             key={type}
             onClick={() => onChange(type)}
-            className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold capitalize transition-colors shrink-0 ${
+            className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold capitalize transition-all shrink-0 ${
               value === type 
                 ? 'bg-red-500 text-white shadow-[0_0_10px_rgba(239,68,68,0.5)]' 
-                : 'bg-[#0a0a0a] text-slate-400 hover:text-white border border-white/10 hover:border-white/30'
+                : 'bg-white dark:bg-[#0a0a0a] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/30'
             }`}
           >
             {type}
@@ -81,7 +81,7 @@ const TypeFilter = ({ value, onChange }: TypeFilterProps) => {
       </div>
 
       {/* Right fade out */}
-      <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent pointer-events-none z-10"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-50 via-slate-50/80 dark:from-[#050505] dark:via-[#050505]/80 to-transparent pointer-events-none z-10 transition-colors duration-300"></div>
     </div>
   );
 };

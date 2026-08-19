@@ -79,7 +79,7 @@ const Home = () => {
     <div className="w-full">
       <Hero />
 
-      <section id="explorer-section" className="relative z-10 pt-28 pb-16 md:pt-40 md:pb-24 bg-[#050505]">
+      <section id="explorer-section" className="relative z-10 pt-28 pb-16 md:pt-40 md:pb-24 bg-slate-50 dark:bg-[#050505] transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">
@@ -121,7 +121,7 @@ const Home = () => {
               <button
                 onClick={loadMore}
                 disabled={isLoadingMore}
-                className="px-8 py-3 bg-[#0a0a0a] text-white border border-white/10 hover:border-white/30 rounded-full font-bold transition-all flex items-center justify-center hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 bg-white dark:bg-[#0a0a0a] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/30 rounded-full font-bold transition-all flex items-center justify-center hover:shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoadingMore ? (
                   <span className="flex items-center gap-2">

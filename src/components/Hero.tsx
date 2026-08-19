@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { getPokemon } from '../services/pokemonApi';
 import type { Pokemon } from '../types/pokemon';
 import PokemonCard from './PokemonCard';
@@ -21,13 +19,6 @@ const Hero = () => {
       .catch(console.error);
   }, []);
 
-  const scrollToExplorer = () => {
-    const element = document.getElementById('explorer-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const getCardTransformsFlex = (index: number) => {
     switch (index) {
       case 0: return "z-10 -rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
@@ -40,9 +31,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-28 md:pt-36 bg-[#050505] flex flex-col items-center border-b border-slate-800">
-      {/* Dark theme Grid Background matching image */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] pointer-events-none"></div>
+    <section className="relative pt-28 md:pt-36 bg-slate-50 dark:bg-[#050505] flex flex-col items-center border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+      {/* Dynamic theme Grid Background matching image */}
+      {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] pointer-events-none"></div> */}
 
       <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
 
@@ -55,9 +46,9 @@ const Hero = () => {
         <div className="text-center space-y-6 max-w-5xl mx-auto flex flex-col items-center">
 
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full transition-colors duration-300">
             <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>
-              Explore The World Of <span style={{ fontFamily: "'Pokemon Solid', sans-serif", fontWeight: 'normal', letterSpacing: '0.05em' }}>Pokemon</span>
+              Explore The World Of <span style={{ fontFamily: "'Pokemon Solid', sans-serif", fontWeight: 'normal', letterSpacing: '0.05em' }} className="text-red-500 dark:text-white">Pokemon</span>
             </span>
 
             {/* <img

@@ -10,8 +10,16 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    // Force dark mode as per the new black/white theme requirement
-    return 'dark';
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+      if (savedTheme) {
+        return savedTheme;
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    }
+    return 'light';
   });
 
   useEffect(() => {

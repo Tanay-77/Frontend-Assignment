@@ -32,7 +32,7 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
       className="group relative block pt-28 pb-2 px-2 transition-all duration-300 hover:-translate-y-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
     >
       {/* The solid card background that only occupies the lower portion */}
-      <div className={`absolute inset-x-0 bottom-0 top-20 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-shadow duration-300 group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.7)] ${typeColorClass}`}></div>
+      <div className={`absolute inset-x-0 bottom-0 top-20 rounded-[2rem] shadow-xl dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:shadow-2xl dark:group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.7)] ${typeColorClass}`}></div>
 
       {/* Content wrapper */}
       <div className="relative z-10 h-full flex flex-col items-center">

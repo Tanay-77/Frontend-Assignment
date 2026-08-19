@@ -6,10 +6,12 @@ import Favorites from './pages/Favorites';
 import Compare from './pages/Compare';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import GlobalLoader from './components/GlobalLoader';
 
 function App() {
   return (
     <Router>
+      <GlobalLoader />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col transition-colors duration-300 bg-slate-50 dark:bg-[#050505]">
         <Navbar />

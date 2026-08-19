@@ -20,21 +20,18 @@ const Compare = () => {
   const stats = Object.keys(STAT_LABELS);
 
   const getWinnerClass = (valA: number, valB: number, isA: boolean) => {
-    if (valA === valB) return 'text-slate-900 dark:text-white font-bold'; // Tie
+    if (valA === valB) return 'text-white/60 font-medium'; // Tie
     if (isA) {
-      return valA > valB ? 'text-green-600 dark:text-green-400 font-extrabold' : 'text-slate-400 dark:text-slate-500';
+      return valA > valB ? 'text-white font-bold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-white/20 font-light';
     } else {
-      return valB > valA ? 'text-green-600 dark:text-green-400 font-extrabold' : 'text-slate-400 dark:text-slate-500';
+      return valB > valA ? 'text-white font-bold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]' : 'text-white/20 font-light';
     }
   };
 
-  const getWinnerBgClass = (valA: number, valB: number, isA: boolean) => {
-    if (valA === valB) return 'bg-slate-100 dark:bg-slate-800'; // Tie
-    if (isA) {
-      return valA > valB ? 'bg-green-100 dark:bg-green-900/30' : 'bg-transparent';
-    } else {
-      return valB > valA ? 'bg-green-100 dark:bg-green-900/30' : 'bg-transparent';
-    }
+  const getBarColor = (valA: number, valB: number, isA: boolean) => {
+    if (valA === valB) return 'bg-white/20';
+    if (isA) return valA > valB ? 'bg-white' : 'bg-white/10';
+    return valB > valA ? 'bg-white' : 'bg-white/10';
   };
 
   return (
@@ -42,18 +39,18 @@ const Compare = () => {
       <div className="container mx-auto max-w-5xl">
         
         {/* Header */}
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center justify-center gap-3">
-            <Scale className="w-8 h-8 text-red-500" />
-            Pokémon Comparison
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 text-white flex items-center justify-center gap-4 tracking-tight">
+            <Scale className="w-8 h-8 md:w-10 md:h-10 text-white/40" />
+            COMPARE
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-white/40 max-w-2xl mx-auto font-medium tracking-wide">
             Select two Pokémon to instantly compare their base stats side-by-side.
           </p>
         </div>
 
         {/* Selection Area */}
-        <div className="glass-card p-6 md:p-8 mb-12 rounded-3xl relative z-20">
+        <div className="p-1 mb-12 relative z-20">
           <div className="flex flex-col md:flex-row gap-12 md:gap-8 items-start justify-between relative">
             <div className="w-full md:w-5/12">
               <CompareSearch 
@@ -64,10 +61,8 @@ const Compare = () => {
             </div>
             
             {/* VS Badge */}
-            <div className="w-full md:w-2/12 flex justify-center py-2 md:py-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-6 pointer-events-none">
-              <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-black italic shadow-lg">
-                VS
-              </div>
+            <div className="w-full md:w-2/12 flex justify-center py-2 md:py-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-8 pointer-events-none">
+              <span className="text-sm font-black tracking-[0.3em] text-white/20">VS</span>
             </div>
 
             <div className="w-full md:w-5/12">
@@ -82,66 +77,75 @@ const Compare = () => {
 
         {/* Comparison Area */}
         {pokemonA && pokemonB ? (
-          <div className="glass-card overflow-hidden rounded-3xl animate-fade-in-up relative z-10">
+          <div className="bg-[#0a0a0a] border border-white/5 overflow-hidden rounded-[2rem] shadow-2xl animate-fade-in-up relative z-10">
             
             {/* Profiles */}
-            <div className="flex border-b border-slate-200 dark:border-slate-700 relative">
-              <div className="w-1/2 p-6 flex flex-col items-center relative overflow-hidden">
-                <div className={`absolute inset-0 opacity-10 ${getTypeColor(pokemonA.types[0]?.type.name)}`}></div>
+            <div className="flex relative">
+              <div className="w-1/2 p-8 md:p-12 flex flex-col items-center relative overflow-hidden group">
+                <div className={`absolute inset-0 opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.08] ${getTypeColor(pokemonA.types[0]?.type.name)}`}></div>
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
                 <img 
                   src={pokemonA.sprites.other['official-artwork']?.front_default || pokemonA.sprites.front_default} 
                   alt={pokemonA.name}
-                  className="w-32 h-32 md:w-48 md:h-48 object-contain mb-4 relative z-10"
+                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
-                <h3 className="text-2xl font-extrabold capitalize text-slate-900 dark:text-white text-center">
+                <h3 className="text-2xl md:text-3xl font-black capitalize text-white text-center tracking-tight">
                   {pokemonA.name}
                 </h3>
               </div>
               
-              <div className="w-px bg-slate-200 dark:bg-slate-700"></div>
+              {/* Center Divider */}
+              <div className="w-px bg-gradient-to-b from-transparent via-white/10 to-transparent absolute left-1/2 top-10 bottom-10"></div>
               
-              <div className="w-1/2 p-6 flex flex-col items-center relative overflow-hidden">
-                <div className={`absolute inset-0 opacity-10 ${getTypeColor(pokemonB.types[0]?.type.name)}`}></div>
+              <div className="w-1/2 p-8 md:p-12 flex flex-col items-center relative overflow-hidden group">
+                <div className={`absolute inset-0 opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.08] ${getTypeColor(pokemonB.types[0]?.type.name)}`}></div>
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
                 <img 
                   src={pokemonB.sprites.other['official-artwork']?.front_default || pokemonB.sprites.front_default} 
                   alt={pokemonB.name}
-                  className="w-32 h-32 md:w-48 md:h-48 object-contain mb-4 relative z-10"
+                  className="w-32 h-32 md:w-56 md:h-56 object-contain mb-6 relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
-                <h3 className="text-2xl font-extrabold capitalize text-slate-900 dark:text-white text-center">
+                <h3 className="text-2xl md:text-3xl font-black capitalize text-white text-center tracking-tight">
                   {pokemonB.name}
                 </h3>
               </div>
             </div>
 
             {/* Stats Table */}
-            <div className="flex flex-col">
-              {stats.map((statName, idx) => {
+            <div className="flex flex-col px-4 md:px-12 pb-12">
+              {stats.map((statName) => {
                 const statA = pokemonA.stats.find(s => s.stat.name === statName)?.base_stat || 0;
                 const statB = pokemonB.stats.find(s => s.stat.name === statName)?.base_stat || 0;
-                const isEven = idx % 2 === 0;
+                
+                // Max stat for calculating bar width (usually 255 is absolute max, but 150 is a good visual baseline)
+                const maxStat = 150; 
 
                 return (
-                  <div key={statName} className={`flex relative ${isEven ? 'bg-slate-50 dark:bg-slate-800/50' : 'bg-white dark:bg-slate-900'}`}>
+                  <div key={statName} className="flex relative items-center justify-between py-5 border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
                     
                     {/* Stat A */}
-                    <div className={`w-1/2 p-4 text-center transition-colors ${getWinnerBgClass(statA, statB, true)}`}>
-                      <span className={`text-xl md:text-2xl ${getWinnerClass(statA, statB, true)}`}>
+                    <div className="w-1/2 pr-6 md:pr-16 flex justify-end items-center gap-4 md:gap-8">
+                      <span className={`text-xl md:text-2xl transition-all duration-300 ${getWinnerClass(statA, statB, true)}`}>
                         {statA}
                       </span>
+                      {/* Bar going left */}
+                      <div className="w-16 md:w-32 h-1 bg-white/5 rounded-full overflow-hidden hidden sm:block">
+                         <div className={`h-full ml-auto rounded-full transition-all duration-1000 ease-out ${getBarColor(statA, statB, true)}`} style={{ width: `${Math.min((statA / maxStat) * 100, 100)}%` }}></div>
+                      </div>
                     </div>
 
-                    {/* Divider & Label */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-4 py-1 shadow-sm z-10">
-                      <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                        {STAT_LABELS[statName]}
-                      </span>
+                    {/* Label */}
+                    <div className="absolute left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors z-10 bg-[#0a0a0a] px-2">
+                      {STAT_LABELS[statName]}
                     </div>
-
-                    <div className="w-px bg-slate-200 dark:bg-slate-700 absolute left-1/2 top-0 bottom-0"></div>
 
                     {/* Stat B */}
-                    <div className={`w-1/2 p-4 text-center transition-colors ${getWinnerBgClass(statA, statB, false)}`}>
-                      <span className={`text-xl md:text-2xl ${getWinnerClass(statA, statB, false)}`}>
+                    <div className="w-1/2 pl-6 md:pl-16 flex justify-start items-center gap-4 md:gap-8">
+                      {/* Bar going right */}
+                      <div className="w-16 md:w-32 h-1 bg-white/5 rounded-full overflow-hidden hidden sm:block">
+                         <div className={`h-full rounded-full transition-all duration-1000 ease-out ${getBarColor(statA, statB, false)}`} style={{ width: `${Math.min((statB / maxStat) * 100, 100)}%` }}></div>
+                      </div>
+                      <span className={`text-xl md:text-2xl transition-all duration-300 ${getWinnerClass(statA, statB, false)}`}>
                         {statB}
                       </span>
                     </div>
@@ -151,26 +155,26 @@ const Compare = () => {
               })}
               
               {/* Total Row */}
-              <div className="flex relative border-t-2 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
+              <div className="flex relative items-center py-10 mt-4">
                 {(() => {
                   const totalA = pokemonA.stats.reduce((acc, curr) => acc + curr.base_stat, 0);
                   const totalB = pokemonB.stats.reduce((acc, curr) => acc + curr.base_stat, 0);
                   return (
                     <>
-                      <div className={`w-1/2 p-6 text-center transition-colors ${getWinnerBgClass(totalA, totalB, true)}`}>
-                        <span className={`text-3xl ${getWinnerClass(totalA, totalB, true)}`}>{totalA}</span>
-                      </div>
-                      
-                      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-white rounded-full px-6 py-2 shadow-lg z-10">
-                        <span className="text-sm font-black uppercase tracking-widest text-white dark:text-slate-900">
-                          TOTAL
+                      <div className="w-1/2 pr-6 md:pr-16 flex justify-end">
+                        <span className={`text-4xl md:text-5xl transition-all duration-300 ${getWinnerClass(totalA, totalB, true)}`}>
+                          {totalA}
                         </span>
                       </div>
                       
-                      <div className="w-px bg-slate-200 dark:bg-slate-700 absolute left-1/2 top-0 bottom-0"></div>
+                      <div className="absolute left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white/40 px-4 bg-[#0a0a0a]">
+                        TOTAL
+                      </div>
 
-                      <div className={`w-1/2 p-6 text-center transition-colors ${getWinnerBgClass(totalA, totalB, false)}`}>
-                        <span className={`text-3xl ${getWinnerClass(totalA, totalB, false)}`}>{totalB}</span>
+                      <div className="w-1/2 pl-6 md:pl-16 flex justify-start">
+                        <span className={`text-4xl md:text-5xl transition-all duration-300 ${getWinnerClass(totalA, totalB, false)}`}>
+                          {totalB}
+                        </span>
                       </div>
                     </>
                   );
@@ -180,8 +184,11 @@ const Compare = () => {
             </div>
           </div>
         ) : (
-          <div className="text-center p-12 text-slate-400 dark:text-slate-500 font-bold border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-3xl animate-fade-in-up">
-            Search and select two Pokémon above to compare their stats.
+          <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 bg-white/[0.01] rounded-[2rem] animate-fade-in-up">
+            <Scale className="w-12 h-12 text-white/10 mb-6" />
+            <p className="text-white/40 font-medium tracking-wide">
+              Search and select two Pokémon above to compare their stats.
+            </p>
           </div>
         )}
 

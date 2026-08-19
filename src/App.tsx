@@ -5,10 +5,12 @@ import PokemonDetails from './pages/PokemonDetails';
 import Favorites from './pages/Favorites';
 import Compare from './pages/Compare';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col transition-colors duration-300 bg-[#050505]">
         <Navbar />
         <main className="flex-grow pt-[72px]">

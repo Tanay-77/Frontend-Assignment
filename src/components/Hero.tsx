@@ -21,11 +21,11 @@ const Hero = () => {
 
   const getCardTransformsFlex = (index: number) => {
     switch (index) {
-      case 0: return "z-10 -rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
-      case 1: return "z-20 -rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
+      case 0: return "z-10 -rotate-[16deg] translate-y-12 sm:translate-y-16 md:translate-y-20 scale-[0.75] sm:scale-[0.8] opacity-85 hover:opacity-100";
+      case 1: return "z-20 -rotate-[8deg] translate-y-4 sm:translate-y-6 md:translate-y-8 scale-[0.85] sm:scale-[0.9] opacity-95 hover:opacity-100";
       case 2: return "z-30 rotate-0 scale-100 md:scale-105";
-      case 3: return "z-20 rotate-[8deg] translate-y-6 md:translate-y-8 scale-[0.9] opacity-95 hover:opacity-100";
-      case 4: return "z-10 rotate-[16deg] translate-y-16 md:translate-y-20 scale-[0.8] opacity-85 hover:opacity-100";
+      case 3: return "z-20 rotate-[8deg] translate-y-4 sm:translate-y-6 md:translate-y-8 scale-[0.85] sm:scale-[0.9] opacity-95 hover:opacity-100";
+      case 4: return "z-10 rotate-[16deg] translate-y-12 sm:translate-y-16 md:translate-y-20 scale-[0.75] sm:scale-[0.8] opacity-85 hover:opacity-100";
       default: return "";
     }
   };
@@ -37,18 +37,18 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
 
-        <img src="/random.png" alt="" className="absolute top-8 left-[2%] md:left-[8%] lg:left-[12%] w-12 md:w-16 opacity-80 hover:scale-110 -rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
-        <img src="/random 1.png" alt="" className="absolute top-32 right-[2%] md:right-[5%] lg:right-[15%] w-10 md:w-14 opacity-70 hover:scale-110 rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
-        <img src="/random.png" alt="" className="absolute bottom-52 right-[4%] md:right-[12%] lg:right-[8%] w-14 md:w-20 opacity-60 hover:scale-110 -rotate-6 transition-transform duration-300 drop-shadow-lg z-0" />
-        <img src="/random 1.png" alt="" className="absolute bottom-24 left-[5%] md:left-[10%] lg:left-[5%] w-10 md:w-12 opacity-80 hover:scale-110 rotate-[20deg] transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random.png" alt="" className="hidden sm:block absolute top-8 left-[2%] md:left-[8%] lg:left-[12%] w-10 md:w-16 opacity-60 md:opacity-80 hover:scale-110 -rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random 1.png" alt="" className="hidden sm:block absolute top-32 right-[2%] md:right-[5%] lg:right-[15%] w-8 md:w-14 opacity-50 md:opacity-70 hover:scale-110 rotate-12 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random.png" alt="" className="absolute bottom-52 right-[-5%] sm:right-[4%] md:right-[12%] lg:right-[8%] w-10 md:w-20 opacity-40 md:opacity-60 hover:scale-110 -rotate-6 transition-transform duration-300 drop-shadow-lg z-0" />
+        <img src="/random 1.png" alt="" className="absolute bottom-24 left-[-2%] sm:left-[5%] md:left-[10%] lg:left-[5%] w-8 md:w-12 opacity-50 md:opacity-80 hover:scale-110 rotate-[20deg] transition-transform duration-300 drop-shadow-lg z-0" />
 
         {/* Text Content */}
         <div className="text-center space-y-6 max-w-5xl mx-auto flex flex-col items-center">
 
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full transition-colors duration-300">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black text-slate-900 dark:text-white leading-snug md:leading-[1.05] tracking-tighter animate-fade-in-up animation-delay-150 flex flex-row items-center justify-center gap-4 lg:gap-6 flex-wrap w-full transition-colors duration-300">
             <span style={{ fontFamily: "sans-serif", fontWeight: 800, }}>
-              Explore The World Of <span style={{ fontFamily: "'Pokemon Solid', sans-serif", fontWeight: 'normal', letterSpacing: '0.05em' }} className="text-red-500 dark:text-white">Pokemon</span>
+              Explore The World Of <span style={{ fontFamily: "'Pokemon Solid', sans-serif", fontWeight: 'normal', letterSpacing: '0.05em' }} className="text-red-500 dark:text-white inline-block mt-1 sm:mt-0">Pokemon</span>
             </span>
 
             {/* <img
@@ -65,14 +65,14 @@ const Hero = () => {
         </div>
 
         {/* Fan Cards */}
-        <div className="relative w-full max-w-6xl mx-auto mt-4 md:mt-8 flex justify-center items-end z-20 pb-0 mb-[-60px] md:mb-[-80px]">
+        <div className="relative w-full max-w-6xl mx-auto mt-4 md:mt-8 flex justify-center items-end z-20 pb-0 mb-[-30px] sm:mb-[-60px] md:mb-[-80px]">
           {heroCards.length > 0 ? heroCards.map((pokemon, index) => {
-            const marginClass = index === 0 ? "" : "-ml-20 sm:-ml-28 md:-ml-32 lg:-ml-40";
+            const marginClass = index === 0 ? "" : "-ml-[4.5rem] min-[400px]:-ml-[5.5rem] sm:-ml-20 md:-ml-28 lg:-ml-32 xl:-ml-40";
 
             return (
               <div
                 key={pokemon.id}
-                className={`relative w-48 sm:w-56 md:w-72 lg:w-80 origin-bottom transition-all duration-700 ease-out hover:!z-50 animate-fade-in-up ${marginClass} ${getCardTransformsFlex(index)}`}
+                className={`relative w-[8.5rem] min-[400px]:w-40 sm:w-48 md:w-56 lg:w-72 xl:w-80 origin-bottom transition-all duration-700 ease-out hover:!z-50 animate-fade-in-up ${marginClass} ${getCardTransformsFlex(index)}`}
                 style={{ animationDelay: `${500 + index * 100}ms` }}
               >
                 <div className="w-full h-full hover:-translate-y-8 md:hover:-translate-y-12 transition-transform duration-300 pointer-events-auto rounded-3xl">

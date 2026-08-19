@@ -41,7 +41,6 @@ const Compare = () => {
         {/* Header */}
         <div className="mb-16 text-center">
           <h2 className="text-3xl md:text-5xl font-black mb-4 text-white flex items-center justify-center gap-4 tracking-tight">
-            <Scale className="w-8 h-8 md:w-10 md:h-10 text-white/40" />
             COMPARE
           </h2>
           <p className="text-white/40 max-w-2xl mx-auto font-medium tracking-wide">
@@ -61,8 +60,11 @@ const Compare = () => {
             </div>
             
             {/* VS Badge */}
-            <div className="w-full md:w-2/12 flex justify-center py-2 md:py-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-8 pointer-events-none">
-              <span className="text-sm font-black tracking-[0.3em] text-white/20">VS</span>
+            <div className="w-full md:w-2/12 flex justify-center py-2 md:py-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-8 pointer-events-none z-10">
+              <div className="relative flex items-center justify-center select-none scale-125 md:scale-150">
+                <span className="text-xl md:text-2xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-red-500 to-orange-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)] z-10 -mr-1">V</span>
+                <span className="text-lg md:text-xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-bl from-blue-400 to-indigo-600 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 mt-2">S</span>
+              </div>
             </div>
 
             <div className="w-full md:w-5/12">
@@ -124,7 +126,7 @@ const Compare = () => {
                   <div key={statName} className="flex relative items-center justify-between py-5 border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
                     
                     {/* Stat A */}
-                    <div className="w-1/2 pr-6 md:pr-16 flex justify-end items-center gap-4 md:gap-8">
+                    <div className="w-1/2 pr-12 sm:pr-16 md:pr-20 flex justify-end items-center gap-4 md:gap-8">
                       <span className={`text-xl md:text-2xl transition-all duration-300 ${getWinnerClass(statA, statB, true)}`}>
                         {statA}
                       </span>
@@ -135,12 +137,12 @@ const Compare = () => {
                     </div>
 
                     {/* Label */}
-                    <div className="absolute left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors z-10 bg-[#0a0a0a] px-2">
+                    <div className="absolute left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors z-10 bg-[#0a0a0a] px-2 whitespace-nowrap">
                       {STAT_LABELS[statName]}
                     </div>
 
                     {/* Stat B */}
-                    <div className="w-1/2 pl-6 md:pl-16 flex justify-start items-center gap-4 md:gap-8">
+                    <div className="w-1/2 pl-12 sm:pl-16 md:pl-20 flex justify-start items-center gap-4 md:gap-8">
                       {/* Bar going right */}
                       <div className="w-16 md:w-32 h-1 bg-white/5 rounded-full overflow-hidden hidden sm:block">
                          <div className={`h-full rounded-full transition-all duration-1000 ease-out ${getBarColor(statA, statB, false)}`} style={{ width: `${Math.min((statB / maxStat) * 100, 100)}%` }}></div>
@@ -161,17 +163,17 @@ const Compare = () => {
                   const totalB = pokemonB.stats.reduce((acc, curr) => acc + curr.base_stat, 0);
                   return (
                     <>
-                      <div className="w-1/2 pr-6 md:pr-16 flex justify-end">
+                      <div className="w-1/2 pr-12 sm:pr-16 md:pr-20 flex justify-end">
                         <span className={`text-4xl md:text-5xl transition-all duration-300 ${getWinnerClass(totalA, totalB, true)}`}>
                           {totalA}
                         </span>
                       </div>
                       
-                      <div className="absolute left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white/40 px-4 bg-[#0a0a0a]">
+                      <div className="absolute left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white/40 px-4 bg-[#0a0a0a] whitespace-nowrap">
                         TOTAL
                       </div>
 
-                      <div className="w-1/2 pl-6 md:pl-16 flex justify-start">
+                      <div className="w-1/2 pl-12 sm:pl-16 md:pl-20 flex justify-start">
                         <span className={`text-4xl md:text-5xl transition-all duration-300 ${getWinnerClass(totalA, totalB, false)}`}>
                           {totalB}
                         </span>
@@ -185,7 +187,10 @@ const Compare = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 bg-white/[0.01] rounded-[2rem] animate-fade-in-up">
-            <Scale className="w-12 h-12 text-white/10 mb-6" />
+            <div className="relative flex items-center justify-center mb-8 select-none scale-110">
+              <span className="text-7xl md:text-8xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-red-500 via-red-600 to-orange-500 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)] z-10 -mr-3">V</span>
+              <span className="text-6xl md:text-7xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-bl from-blue-400 via-blue-500 to-indigo-600 drop-shadow-[0_0_20px_rgba(59,130,246,0.6)] z-0 mt-6 -ml-1">S</span>
+            </div>
             <p className="text-white/40 font-medium tracking-wide">
               Search and select two Pokémon above to compare their stats.
             </p>

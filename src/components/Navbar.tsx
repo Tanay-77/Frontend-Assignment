@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-2 z-10">
           <button 
             onClick={toggleTheme}
-            className="p-2.5 rounded-full text-slate-500 hover:text-slate-900 hover:bg-slate-200 dark:text-white dark:hover:bg-white/10 transition-colors"
+            className="p-2.5 rounded-full text-slate-500 hover:text-slate-900 hover:bg-slate-200 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10 transition-colors"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -89,7 +89,7 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-2 z-10">
           <button 
             onClick={toggleTheme}
-            className="p-2 text-slate-900 dark:text-white rounded-full focus:outline-none"
+            className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-200 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10 rounded-full focus:outline-none transition-colors"
           >
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
